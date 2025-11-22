@@ -67,6 +67,7 @@ Traffic between spokes goes through the hub so everything can be checked. Worklo
 
 ## 6. Conceptual Architecture Diagram
 
+``` mermaid
 graph TD
     %% Management Groups
     Root["Root Management Group"]
