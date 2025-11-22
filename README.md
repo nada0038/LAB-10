@@ -68,6 +68,13 @@ Traffic between spokes goes through the hub so everything can be checked. Worklo
 ## 6. Conceptual Architecture Diagram
 
 ```mermaid
+class Bastion verify;
+class AppSpoke verify;
+class DNS least;
+class APISpoke least;
+class Firewall breach;
+class Logs breach;
+class DataSpoke breach;
 graph TD
     %% Management Groups
     Root["Root Management Group"]
@@ -109,11 +116,14 @@ graph TD
     classDef least fill:#d9f7be,stroke:#4caf50,stroke-width:2px;
     classDef breach fill:#ffe0b2,stroke:#fb8c00,stroke-width:2px;
 
-    Bastion,AppSpoke class verify
-    DNS,APISpoke class least
-    Firewall,Logs,DataSpoke class breach
+    class Bastion verify;
+    class AppSpoke verify;
+    class DNS least;
+    class APISpoke least;
+    class Firewall breach;
+    class Logs breach;
+    class DataSpoke breach;
 
-```
 
 
 ## Akash Nadackanal Vinod - 041156265
