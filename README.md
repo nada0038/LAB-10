@@ -67,13 +67,38 @@ Traffic between spokes goes through the hub so everything can be checked. Worklo
 
 ## 6. Conceptual Architecture Diagram
 
-Bastion,AppSpoke class verify
-DNS,APISpoke class least
-Firewall,Logs,DataSpoke class breach
-class Bastion verify;
-class AppSpoke verify;
-class DNS least;
-class APISpoke least;
-class Firewall breach;
-class Logs breach;
-class DataSpoke breach;
+graph TD
+    %% Management Groups
+    Root["Root Management Group"]
+    CloudMed["CloudMed"]
+    Platform["Platform"]
+    Prod["Production"]
+    Dev["Development"]
+
+    %% Hub Components
+    Hub["Hub Network"]
+    Firewall["Azure Firewall<br>(Assume Breach)"]
+    Bastion["Azure Bastion<br>(Verify Explicitly)"]
+    DNS["Private DNS Zones<br>(Least Privilege)"]
+    Logs["Log Analytics Workspace<br>(Assume Breach)"]
+
+    %% Spokes
+    AppSpoke["App Spoke<br>(Front-End Tier)<br>(Verify Explicitly)"]
+    APISpoke["API Spoke<br>(Backend Tier)<br>(Least Privilege)"]
+    DataSpoke["Data Spoke<br>(SQL & Storage)<br>(Assume Breach)"]
+
+    %% Connections
+    Root --> CloudMed
+    CloudMed --> Platform
+    CloudMed --> Prod
+    CloudMed --> Dev
+
+    CloudMed --> Hub
+    Hub --> Firewall
+    Hub --> Bastion
+    Hub --> DNS
+    Hub --> Logs
+
+    Hub --> AppSpoke
+    Hub --> APISpoke
+    Hub --> DataSpoke
