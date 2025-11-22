@@ -1,4 +1,6 @@
-# CloudMed Solutions – Zero Trust Azure Landing Zone
+# Zero Trust Azure Landing Zone
+
+# CloudMed Solutions Inc 
 
 ## 1. About CloudMed
 
