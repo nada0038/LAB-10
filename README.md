@@ -103,3 +103,9 @@ graph TD
     Hub --> AppSpoke
     Hub --> APISpoke
     Hub --> DataSpoke
+
+```
+
+## 7. Conclusion
+
+Overall, this setup helps CloudMed keep patient data safe and follow all the rules. The hub-and-spoke network, identity checks, and monitoring make sure only the right people can access the right things. It also keeps things organized and ready to grow in the future without losing control over security or costs.
